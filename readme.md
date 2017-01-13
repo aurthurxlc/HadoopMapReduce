@@ -25,3 +25,8 @@ MapReduce 基本演示案例
 > resources 包
 
 包含 Hadoop 集群配置信息，其中 mapred-site.xml 中包含本项目打包后的 jar 包绝对路径，远程提交程序运行时使用！
+
+####
+任务提交后截图：
+
+![rm](./rm.png)
