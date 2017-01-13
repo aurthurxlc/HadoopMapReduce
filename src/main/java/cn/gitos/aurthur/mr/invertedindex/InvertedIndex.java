@@ -1,6 +1,7 @@
 package cn.gitos.aurthur.mr.invertedindex;
 
 import cn.gitos.aurthur.base.BaseDriver;
+import cn.gitos.aurthur.mr.BaseMapReduce;
 import cn.gitos.aurthur.base.HadoopUtil;
 import cn.gitos.aurthur.base.JobInitModel;
 import org.apache.hadoop.conf.Configuration;
@@ -16,7 +17,7 @@ import java.io.IOException;
  * Created by Aurthur on 2017/1/12.
  * 倒排索引示例
  */
-public class InvertedIndex {
+public class InvertedIndex implements BaseMapReduce {
     private static class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Text> {
 
         private Text k = new Text();
@@ -81,7 +82,7 @@ public class InvertedIndex {
         }
     }
 
-    public static void run() throws InterruptedException, IOException, ClassNotFoundException {
+    public void run() throws InterruptedException, IOException, ClassNotFoundException {
         Configuration conf = HadoopUtil.getConfiguration();
         String inPath = "hdfs://node1:9000/data/test.file";
         String outPath = "hdfs://node1:9000/output/test.file/InvertedIndex/";

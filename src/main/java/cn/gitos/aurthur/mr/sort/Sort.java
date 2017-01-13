@@ -1,6 +1,7 @@
 package cn.gitos.aurthur.mr.sort;
 
 import cn.gitos.aurthur.base.BaseDriver;
+import cn.gitos.aurthur.mr.BaseMapReduce;
 import cn.gitos.aurthur.base.HadoopUtil;
 import cn.gitos.aurthur.base.JobInitModel;
 import org.apache.hadoop.conf.Configuration;
@@ -15,7 +16,7 @@ import java.io.IOException;
  * Created by Aurthur on 2017/1/13.
  * 排序示例
  */
-public class Sort {
+public class Sort implements BaseMapReduce {
     //map将输入中的value化成IntWritable类型，作为输出的key
     private static class SortMapper extends Mapper<Object, Text, IntWritable, IntWritable> {
         private static IntWritable data = new IntWritable();
@@ -46,7 +47,7 @@ public class Sort {
         }
     }
 
-    public static void run() throws InterruptedException, IOException, ClassNotFoundException {
+    public void run() throws InterruptedException, IOException, ClassNotFoundException {
         Configuration conf = HadoopUtil.getConfiguration();
         String inPath = "hdfs://node1:9000/data/sort";
         String outPath = "hdfs://node1:9000/output/sort/Sort/";

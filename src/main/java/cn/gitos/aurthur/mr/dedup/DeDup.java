@@ -1,6 +1,7 @@
 package cn.gitos.aurthur.mr.dedup;
 
 import cn.gitos.aurthur.base.BaseDriver;
+import cn.gitos.aurthur.mr.BaseMapReduce;
 import cn.gitos.aurthur.base.HadoopUtil;
 import cn.gitos.aurthur.base.JobInitModel;
 import org.apache.hadoop.conf.Configuration;
@@ -14,7 +15,7 @@ import java.io.IOException;
  * Created by Aurthur on 2017/1/13.
  * 去重处理
  */
-public class DeDup {
+public class DeDup implements BaseMapReduce {
     private static Text null_data = new Text("");
 
     //map将输入中的value复制到输出数据的key上，并直接输出
@@ -41,7 +42,7 @@ public class DeDup {
         }
     }
 
-    public static void run() throws InterruptedException, IOException, ClassNotFoundException {
+    public void run() throws InterruptedException, IOException, ClassNotFoundException {
         Configuration conf = HadoopUtil.getConfiguration();
         String inPath = "hdfs://node1:9000/data/dedup/";
         String outPath = "hdfs://node1:9000/output/dedup/DeDup";

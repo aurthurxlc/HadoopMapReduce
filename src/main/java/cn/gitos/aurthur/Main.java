@@ -1,6 +1,6 @@
 package cn.gitos.aurthur;
 
-import cn.gitos.aurthur.mr.sort.Sort;
+import cn.gitos.aurthur.mr.tablejoin.TableJoin;
 
 import java.io.IOException;
 
@@ -10,9 +10,11 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
-//        WordCount.run();
-//        InvertedIndex.run();
-//        DeDup.run();
-        Sort.run();
+//        new WordCount().run();
+//        new InvertedIndex().run();
+//        new DeDup().run();
+//        new Sort().run();
+//        new Score().run();
+        new TableJoin().run();
     }
 }

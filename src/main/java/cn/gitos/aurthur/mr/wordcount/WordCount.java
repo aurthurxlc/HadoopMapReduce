@@ -1,6 +1,7 @@
 package cn.gitos.aurthur.mr.wordcount;
 
 import cn.gitos.aurthur.base.BaseDriver;
+import cn.gitos.aurthur.mr.BaseMapReduce;
 import cn.gitos.aurthur.base.HadoopUtil;
 import cn.gitos.aurthur.base.JobInitModel;
 import org.apache.hadoop.conf.Configuration;
@@ -16,8 +17,7 @@ import java.util.StringTokenizer;
  * Created by Aurthur on 2017/1/12.
  * 单词统计
  */
-public class WordCount {
-
+public class WordCount implements BaseMapReduce {
     private static class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
         private final IntWritable one = new IntWritable(1);
         private Text word = new Text();
@@ -46,7 +46,7 @@ public class WordCount {
         }
     }
 
-    public static void run() throws InterruptedException, IOException, ClassNotFoundException {
+    public void run() throws InterruptedException, IOException, ClassNotFoundException {
         Configuration conf = HadoopUtil.getConfiguration();
         String inPath = "hdfs://node1:9000/data/test.file";
         String outPath = "hdfs://node1:9000/output/test.file/WordCount";
