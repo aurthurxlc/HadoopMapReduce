@@ -29,4 +29,4 @@ MapReduce 基本演示案例
 ####
 任务提交后截图：
 
-![rm](./rm.png)
+![rm](./public/rm.png)
